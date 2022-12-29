@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/btm_nav_item_todo"
+        android:icon="@drawable/ic_baseline_format_list_bulleted_24"
+        android:title="@string/todo" />
+    <item
+        android:id="@+id/btm_nav_item_in_progress"
+        android:icon="@drawable/in_progress_24"
+        android:title="@string/inprogress" />
+    <item
+        android:id="@+id/btm_nav_item_done"
+        android:icon="@drawable/baseline_done_24"
+        android:title="@string/done" />
+</menu>

@@ -1,42 +1,52 @@
-package com.kamrulhasan.todo
+package com.kamrulhasan.todo.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.kamrulhasan.todo.adapter.ToDoAdapter
-import com.kamrulhasan.todo.data.ToDoItem
+import com.kamrulhasan.todo.R
+import com.kamrulhasan.todo.databinding.ActivityMainBinding
 import com.kamrulhasan.todo.databinding.TodoItemBinding
-import com.kamrulhasan.todo.fragment.AddItemFragmentDirections
-import com.kamrulhasan.todo.fragment.ToDoListFragment
-import com.kamrulhasan.todo.fragment.ToDoListFragmentDirections
-import com.kamrulhasan.todo.viewmodel.ToDoViewModel
-import com.kamrulhasan.todo.viewmodel.ToDoViewModelProviderFactory
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_to_do_list.*
 
 private const val TAG = "MainActivity"
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController:NavController
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host) as NavHostFragment
         navController = navHostFragment.navController
         setupActionBarWithNavController(navController)
+
+        binding.btmNavBar.setOnItemSelectedListener {
+            when(it.itemId){
+                R.id.btm_nav_item_done -> {
+                    navController.navigate(R.id.doneFragment)
+                    true
+                }
+                R.id.btm_nav_item_in_progress -> {
+                    navController.navigate(R.id.inProgressFragment)
+                    true
+                }
+                else ->{
+                    navController.navigate(R.id.toDoListFragment)
+                    true
+                }
+
+            }
+        }
+
     }
 
     override fun onSupportNavigateUp(): Boolean {

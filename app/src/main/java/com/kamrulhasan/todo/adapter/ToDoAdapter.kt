@@ -4,12 +4,16 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.kamrulhasan.todo.R
 import com.kamrulhasan.todo.data.ToDoItem
 import com.kamrulhasan.todo.databinding.TodoItemBinding
-import com.kamrulhasan.todo.fragment.ToDoListFragment
+import com.kamrulhasan.todo.fragment.ToDoListFragmentDirections
 import com.kamrulhasan.todo.viewmodel.ToDoViewModel
 
 private const val TAG = "ToDoAdapter"
@@ -48,6 +52,10 @@ class ToDoAdapter (
                 Toast.LENGTH_SHORT
             ).show()
 
+        }
+        holder.binding.cardEdit.setOnClickListener { view ->
+            val action = ToDoListFragmentDirections.actionToDoListFragmentToEditListFragment()
+            view.findNavController().navigate(action)
         }
     }
 
