@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.size
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavArgs
@@ -37,6 +38,7 @@ class ToDoListFragment : Fragment() {
         viewModel = ViewModelProvider(requireActivity(), factory)[ToDoViewModel::class.java]
         initializeAdapter()
 
+//        if(it)
     }
 
     private fun initializeAdapter() {
@@ -48,7 +50,15 @@ class ToDoListFragment : Fragment() {
         viewModel.list.observe(viewLifecycleOwner) {
             recycler_view_todo.adapter = ToDoAdapter(requireContext(), viewModel, it)
             Log.d(TAG, "observer called"+viewModel.newList.size)
+            getEmptyMassage()
+        }
+    }
 
+    fun getEmptyMassage() {
+        if(viewModel.newList.size == 0){
+            tv_no_value.visibility = View.VISIBLE
+        }else{
+            tv_no_value.visibility = View.GONE
         }
     }
 }

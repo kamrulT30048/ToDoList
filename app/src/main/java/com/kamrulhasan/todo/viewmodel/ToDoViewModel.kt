@@ -11,12 +11,9 @@ class ToDoViewModel : ViewModel()  {
         val newList = arrayListOf<ToDoItem>()
 
         fun addItem(toDoItem: ToDoItem){
-            Log.d(TAG, "addItem: ${newList.size}")
+//            Log.d(TAG, "addItem: ${newList.size}")
             newList.add(toDoItem)
-            Log.d(TAG, "addItem: ${newList.size}")
-
             list.value = newList
-
         }
 
         fun removeItem(toDoItem: ToDoItem){

@@ -53,15 +53,16 @@ class AddItemFragment : Fragment() {
                 val item = ToDoItem(itemTitle, itemDescription, getCurrentDateTime())
 //                itemData = item
                 viewModel.addItem(item)
+
+                //showing a toast
+                Toast.makeText(
+                    this.requireContext(),
+                    "one item added",
+                    Toast.LENGTH_SHORT
+                ).show()
+
                 Log.d(TAG, "onViewCreated: ${item.title}")
                 findNavController().navigate(R.id.action_addItemFragment_to_toDoListFragment)
-
-//                //showing a toast
-//                Toast.makeText(
-//                    this.requireContext(),
-//                    "one item added",
-//                    Toast.LENGTH_SHORT
-//                ).show()
 
             } else {
                 Toast.makeText(
@@ -80,9 +81,4 @@ class AddItemFragment : Fragment() {
 
         return today.toString()
     }
-
-//    @JvmName("getItemData1")
-//    fun getItemData(): ToDoItem {
-//        return itemData
-//    }
 }

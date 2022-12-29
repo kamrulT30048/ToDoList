@@ -9,4 +9,5 @@
     <string name="add">add</string>
     <string name="sample_description">Sample Description</string>
     <string name="adding_date">Adding Date</string>
+    <string name="no_item_in_list">No Item In ToDo List</string>
 </resources>
