@@ -9,8 +9,12 @@
     <string name="add">add</string>
     <string name="sample_description">Sample Description</string>
     <string name="adding_date">Adding Date</string>
-    <string name="no_item_in_list">No Item In ToDo List</string>
+    <string name="no_item_in_list">No Task In ToDo List</string>
     <string name="todo">ToDo</string>
     <string name="inprogress">InProgress</string>
     <string name="done">Done</string>
+    <string name="update">UPDATE</string>
+    <string name="no_item_in_inprogress_list">No Task in InProgress List</string>
+    <string name="no_item_in_done_list">No Item in Done List</string>
+    <string name="title_">Title</string>
 </resources>

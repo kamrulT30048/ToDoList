@@ -7,36 +7,20 @@
     app:startDestination="@id/toDoListFragment">
 
     <fragment
-        android:id="@+id/addItemFragment"
-        android:name="com.kamrulhasan.todo.fragment.AddItemFragment"
-        android:label="Add Item"
-        tools:layout="@layout/fragment_add_item">
-        <action
-            android:id="@+id/action_addItemFragment_to_toDoListFragment"
-            app:destination="@id/toDoListFragment"
-            app:popUpTo="@id/toDoListFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/toDoListFragment"
         android:name="com.kamrulhasan.todo.fragment.ToDoListFragment"
         android:label="ToDo List"
         tools:layout="@layout/fragment_to_do_list">
         <action
-            android:id="@+id/action_toDoListFragment_to_addItemFragment"
-            app:destination="@id/addItemFragment" />
-        <action
             android:id="@+id/action_toDoListFragment_to_inProgressFragment"
             app:destination="@id/inProgressFragment" />
-        <action
-            android:id="@+id/action_toDoListFragment_to_editListFragment"
-            app:destination="@id/editListFragment" />
 
     </fragment>
     <fragment
         android:id="@+id/inProgressFragment"
         android:name="com.kamrulhasan.todo.fragment.InProgressFragment"
-        android:label="fragment_in_progress"
-        tools:layout="@layout/fragment_in_progress" >
+        android:label="In Progress List"
+        tools:layout="@layout/fragment_in_progress">
         <action
             android:id="@+id/action_inProgressFragment_to_doneFragment"
             app:destination="@id/doneFragment" />
@@ -44,36 +28,14 @@
             android:id="@+id/action_inProgressFragment_to_toDoListFragment"
             app:destination="@id/toDoListFragment"
             app:popUpTo="@id/toDoListFragment" />
-        <action
-            android:id="@+id/action_inProgressFragment_to_editListFragment"
-            app:destination="@id/editListFragment" />
     </fragment>
     <fragment
         android:id="@+id/doneFragment"
         android:name="com.kamrulhasan.todo.fragment.DoneFragment"
-        android:label="fragment_done"
-        tools:layout="@layout/fragment_done" >
+        android:label="Done List"
+        tools:layout="@layout/fragment_done">
         <action
             android:id="@+id/action_doneFragment_to_inProgressFragment"
-            app:destination="@id/inProgressFragment" />
-        <action
-            android:id="@+id/action_doneFragment_to_editListFragment"
-            app:destination="@id/editListFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/editListFragment"
-        android:name="com.kamrulhasan.todo.fragment.EditListFragment"
-        android:label="fragment_edit_list"
-        tools:layout="@layout/fragment_edit_list" >
-        <action
-            android:id="@+id/action_editListFragment_to_toDoListFragment"
-            app:destination="@id/toDoListFragment"
-            app:popUpTo="@id/toDoListFragment" />
-        <action
-            android:id="@+id/action_editListFragment_to_doneFragment"
-            app:destination="@id/doneFragment" />
-        <action
-            android:id="@+id/action_editListFragment_to_inProgressFragment"
             app:destination="@id/inProgressFragment" />
     </fragment>
 </navigation>

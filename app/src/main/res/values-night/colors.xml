@@ -10,15 +10,14 @@
     <color name="gray_light">#DFDFDF</color>
     <color name="gray_dark">#A19F9F</color>
     <color name="gray">#C5C4C4</color>
-    <color name="blue_light200">#BDD1FB</color>
+    <color name="blue_light200">#A2BDF6</color>
     <color name="blue_light300">#588BF8</color>
 
     // Custom color
-    <color name="background">#FFFFFF</color>
-    <color name="action_bar">#283593</color>
-    <color name="action_bar_select_icon">#FFFFFF</color>
-    <color name="action_bar_unselect_icon">#000000</color>
-    <color name="item_background">#88B4EA</color>
+    <color name="action_bar">#141D60</color>
+    <color name="action_bar_icon">#CAFDAB</color>
+    <color name="background">#000142</color>
+    <color name="item_background">#00428E</color>
     <color name="red">#C62828</color>
-    <color name="floating_button">#459345</color>
+
 </resources>

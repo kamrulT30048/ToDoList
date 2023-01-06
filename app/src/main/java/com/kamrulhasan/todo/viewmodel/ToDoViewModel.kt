@@ -1,27 +1,82 @@
 package com.kamrulhasan.todo.viewmodel
 
-import android.util.Log
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.kamrulhasan.todo.data.ToDoItem
+import android.app.Application
+import androidx.lifecycle.*
+import com.kamrulhasan.todo.model.DoneItem
+import com.kamrulhasan.todo.model.InprogressItem
+import com.kamrulhasan.todo.model.ToDoItem
+import com.kamrulhasan.todo.model.ToDoItem_DataBase
+import com.kamrulhasan.todo.repository.ItemRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class ToDoViewModel : ViewModel()  {
+class ToDoViewModel(application: Application) : AndroidViewModel(application) {
+
     private val TAG = "ToDoViewModel"
-        val list = MutableLiveData<ArrayList<ToDoItem>>()
-        val newList = arrayListOf<ToDoItem>()
+    val readAllToDoList: LiveData<List<ToDoItem>>
+    val readAllInProgress: LiveData<List<InprogressItem>>
+    val readAllDoneList: LiveData<List<DoneItem>>
+    val repository: ItemRepository
 
-        fun addItem(toDoItem: ToDoItem){
-//            Log.d(TAG, "addItem: ${newList.size}")
-            newList.add(toDoItem)
-            list.value = newList
-        }
+    init {
+        val itemDao = ToDoItem_DataBase.getDatabase(application).getItemDao()
+        repository = ItemRepository(itemDao)
+        readAllToDoList = repository.readAllToDoList
+        readAllInProgress = repository.readAllInProgress
+        readAllDoneList = repository.readAllDoneList
+    }
 
-        fun removeItem(toDoItem: ToDoItem){
-            newList.remove(toDoItem)
-            list.value = newList
+    fun addItem(toDoItem: ToDoItem) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.addItem(toDoItem)
         }
-        fun removeItem(position: Int){
-            newList.removeAt(position)
-            list.value = newList
+    }
+
+    fun addItem(inprogressItem: InprogressItem) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.addItem(inprogressItem)
         }
+    }
+
+    fun addItem(doneItem: DoneItem) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.addItem(doneItem)
+        }
+    }
+
+    fun removeItem(toDoItem: ToDoItem) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.removeItem(toDoItem)
+        }
+    }
+
+    fun removeItem(inprogressItem: InprogressItem) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.removeItem(inprogressItem)
+        }
+    }
+
+    fun removeItem(doneItem: DoneItem) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.removeItem(doneItem)
+        }
+    }
+
+    fun updateItem(toDoItem: ToDoItem) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateItem(toDoItem)
+        }
+    }
+
+    fun updateItem(doneItem: DoneItem) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateItem(doneItem)
+        }
+    }
+
+    fun updateItem(inprogressItem: InprogressItem) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateItem(inprogressItem)
+        }
+    }
 }

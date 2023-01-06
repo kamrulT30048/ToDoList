@@ -1,9 +1,11 @@
 package com.kamrulhasan.todo.ui
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.core.graphics.toColor
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -23,6 +25,10 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+//        window.statusBarColor = resources.getColor(R.color.action_bar)
+
+
 
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host) as NavHostFragment
@@ -45,7 +51,10 @@ class MainActivity : AppCompatActivity() {
                 }
 
             }
+
+
         }
+//        binding.btmNavBar.se
 
     }
 
@@ -54,18 +63,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     //adding menu
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_item,menu)
-        return super.onCreateOptionsMenu(menu)
-    }
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        menuInflater.inflate(R.menu.menu_item,menu)
+//        return super.onCreateOptionsMenu(menu)
+//    }
 
-    //operation on item select
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
-            R.id.todo_add_menu_icon ->{
-                navController.navigate(R.id.addItemFragment)
-            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
+//    //operation on item select
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        when(item.itemId){
+//            R.id.todo_add_menu_icon ->{
+//                navController.navigate(R.id.addItemFragment)
+//            }
+//        }
+//        return super.onOptionsItemSelected(item)
+//    }
 }
